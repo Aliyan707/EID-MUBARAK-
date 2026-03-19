@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { gsap } from '@/lib/gsap'
+// ScrollTrigger is registered globally in lib/gsap.ts — used via gsap's scrollTrigger:{} option
 
 // ── Personal message paragraphs ──────────────────────────────────
 const MESSAGE_PARAGRAPHS = [
