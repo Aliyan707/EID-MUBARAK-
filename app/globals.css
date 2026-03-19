@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #04040f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #a07820);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f0d060;
+}
+
+/* ─── Base ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+}
+
+body {
+  background: #04040f;
+  cursor: default;
+}
+
+/* ─── Deep Nebula Background ───────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 40%, rgba(100, 0, 130, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(0, 40, 120, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(60, 0, 100, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(0, 60, 80, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Typography ───────────────────────────────────────── */
+.font-amiri     { font-family: var(--font-amiri), serif; }
+.font-greatVibes { font-family: var(--font-great-vibes), cursive; }
+.font-cormorant { font-family: var(--font-cormorant), serif; }
+.font-poppins   { font-family: var(--font-poppins), sans-serif; }
+.font-sacramento { font-family: var(--font-sacramento), cursive; }
+.font-reemKufi  { font-family: var(--font-reem-kufi), sans-serif; }
+
+/* ─── Gold Shimmer Text ────────────────────────────────── */
+.text-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #a07820 0%,
+    #d4af37 25%,
+    #f0d060 50%,
+    #d4af37 75%,
+    #a07820 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Glow Utilities ───────────────────────────────────── */
+.glow-gold {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.9))
+          drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+}
+
+.glow-gold-sm {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.7));
+}
+
+.glow-moon {
+  filter:
+    drop-shadow(0 0 40px rgba(255, 215, 0, 1))
+    drop-shadow(0 0 80px rgba(255, 180, 0, 0.7))
+    drop-shadow(0 0 120px rgba(200, 140, 0, 0.4));
+}
+
+/* ─── Glassmorphism Card ───────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow:
+    0 0 40px rgba(212, 175, 55, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-inner {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* ─── Gold Border Glow ─────────────────────────────────── */
+.border-gold-glow {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.2),
+    inset 0 0 20px rgba(212, 175, 55, 0.04);
+}
+
+/* ─── Ornamental Divider ───────────────────────────────── */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(212, 175, 55, 0.7);
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+}
+
+/* ─── Word / Line Animation Wrapper ───────────────────── */
+.word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-right: 0.25em;
+}
+
+.word-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ─── Moon click sparkle ───────────────────────────────── */
+.sparkle-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+
+/* ─── Hero gradient fade-in ────────────────────────────── */
+.hero-gradient {
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 40%,
+    rgba(212, 175, 55, 0.06) 0%,
+    rgba(10, 8, 24, 0.0) 70%
+  );
+}
+
+/* ─── Tsparticles canvas ───────────────────────────────── */
+#tsparticles {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Section fade-in utility ──────────────────────────── */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ─── Audio button pulse ring ──────────────────────────── */
+@keyframes ring-pulse {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.ring-pulse {
+  animation: ring-pulse 1.8s ease-out infinite;
+}
+
+/* ─── Scroll dot bounce ───────────────────────────────── */
+@keyframes scrollDot {
+  0%   { top: 0%;   opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { top: 90%;  opacity: 0; }
+}
+
+/* ─── Preloader pulse dots ─────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%       { transform: scale(1.5); opacity: 1;   }
+}
+
+/* ─── Card shimmer border sweep ───────────────────────── */
+@keyframes borderSweep {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+.card-shimmer-border {
+  position: relative;
+}
+.card-shimmer-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(212,175,55,0.0) 0%,
+    rgba(212,175,55,0.5) 30%,
+    rgba(255,240,140,0.8) 50%,
+    rgba(212,175,55,0.5) 70%,
+    rgba(212,175,55,0.0) 100%
+  );
+  background-size: 300% 300%;
+  animation: borderSweep 4s ease infinite;
+  z-index: -1;
+  border-radius: 1.5rem;
+}
+
+/* ─── Mosque silhouette ────────────────────────────────── */
+.mosque-silhouette {
+  fill: rgba(10, 6, 30, 1);
+  filter: drop-shadow(0 -10px 30px rgba(212, 175, 55, 0.15));
+}
+
+/* ─── Heart float keyframe ──────────────────────────── */
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(0.3); opacity: 0; }
+}
